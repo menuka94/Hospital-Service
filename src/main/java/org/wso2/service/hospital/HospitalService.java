@@ -16,6 +16,7 @@
 
 package org.wso2.service.hospital;
 
+import org.wso2.msf4j.Microservice;
 import org.wso2.service.hospital.daos.Appointment;
 import org.wso2.service.hospital.daos.AppointmentRequest;
 import org.wso2.service.hospital.daos.ChannelingFeeDao;
@@ -40,7 +41,7 @@ import java.util.Map;
  *
  * @since 1.0.0-SNAPSHOT
  */
-public class HospitalService {
+public class HospitalService implements Microservice {
 
     private Map<Integer, Appointment> appointments = new HashMap<>();
     private HospitalDAO hospitalDAO = new HospitalDAO();
@@ -75,6 +76,17 @@ public class HospitalService {
                 hospitalDAO.getPatientRecordMap().put(appointmentRequest.getPatient().getSsn(), patientRecord);
             }
 
+            return Response.status(Response.Status.OK) .entity(appointment).type(MediaType.APPLICATION_JSON).build();
+        } else {
+            // Cannot find a doctor for this category
+            Status status = new Status("Invalid Category");
+            return Response.ok(status, MediaType.APPLICATION_JSON).build();
+        }
+    }
+
+    public Response getAppointment(int appointmentNo) {
+        Appointment appointment = this.appointments.get(appointmentNo);
+        if (appointment != null) {
             return Response.status(Response.Status.OK) .entity(appointment).type(MediaType.APPLICATION_JSON).build();
         } else {
             // Cannot find a doctor for this category

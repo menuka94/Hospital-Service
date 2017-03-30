@@ -20,6 +20,8 @@ public class HealthCareUtil {
         double discounted = (((HealthcareDao.findDoctorByName(doctor).getFee())/100)*(100-discount));
         payment.setDiscounted(discounted);
         payment.setPatient(paymentSettlement.getPatient().getName());
+        payment.setAppointmentNo(paymentSettlement.getAppointmentNumber());
+        payment.setDoctorName(paymentSettlement.getDoctor().getName());
 
         return payment;
     }

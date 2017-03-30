@@ -17,6 +17,7 @@
 package org.wso2.service.hospital;
 
 import com.google.gson.Gson;
+import org.wso2.msf4j.Microservice;
 import org.wso2.service.hospital.daos.*;
 import org.wso2.service.hospital.utils.HealthCareUtil;
 
@@ -34,7 +35,7 @@ import java.util.List;
  * @since 1.0.0-SNAPSHOT
  */
 @Path("/healthcare")
-public class HealthcareService {
+public class HealthcareService implements Microservice {
 
     public HealthcareService() {
         fillCategories();
@@ -65,6 +66,13 @@ public class HealthcareService {
             Status status = new Status("Could not find any entry for the requested Category");
             return Response.status(Response.Status.OK) .entity(status).type(MediaType.APPLICATION_JSON).build();
         }
+    }
+
+    @GET
+    @Path("/appointments/{appointment_id}")
+    public Response getAppointment(@PathParam("appointment_id") int id) {
+//        return super.getAppointment(id);
+        return null;
     }
 
     @POST

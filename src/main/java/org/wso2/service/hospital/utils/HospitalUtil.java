@@ -23,6 +23,7 @@ public class HospitalUtil {
         newAppointment.setPatient(appointmentRequest.getPatient());
         newAppointment.setFee(doctor.getFee());
         newAppointment.setConfirmed(false);
+        newAppointment.setAppointmentDate(appointmentRequest.getAppointmentDate());
 
         return newAppointment;
     }

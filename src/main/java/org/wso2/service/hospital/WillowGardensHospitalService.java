@@ -30,6 +30,12 @@ public class WillowGardensHospitalService extends HospitalService {
     }
 
     @GET
+    @Path("/appointments/{appointment_id}")
+    public Response getAppointment(@PathParam("appointment_id") int id) {
+        return super.getAppointment(id);
+    }
+
+    @GET
     @Path("/appointments/{appointment_id}/fee")
     public Response checkChannellingFee(@PathParam("appointment_id") int id) {
         return super.checkChannellingFee(id);

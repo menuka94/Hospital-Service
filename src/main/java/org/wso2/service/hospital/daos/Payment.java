@@ -6,6 +6,8 @@ import java.util.UUID;
  * Created by nadeeshaan on 7/21/16.
  */
 public class Payment {
+    private int appointmentNo;
+    private String doctorName;
     private String patient;
     private double actualFee;
     private int discount;
@@ -13,6 +15,22 @@ public class Payment {
     private String paymentID;
 
     private String status;
+
+    public int getAppointmentNo() {
+        return appointmentNo;
+    }
+
+    public void setAppointmentNo(int appointmentNo) {
+        this.appointmentNo = appointmentNo;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
 
     public Payment() {
         this.paymentID = UUID.randomUUID().toString();

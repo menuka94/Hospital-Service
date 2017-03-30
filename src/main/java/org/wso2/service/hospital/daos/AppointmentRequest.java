@@ -11,11 +11,13 @@ public class AppointmentRequest {
     private Patient patient;
     private String doctor;
     private String hospital;
+    private String appointmentDate;
 
-    public AppointmentRequest(Patient patient, String doctor, String hospital) {
+    public AppointmentRequest(Patient patient, String doctor, String hospital, String appointmentDate) {
         this.patient = patient;
         this.doctor = doctor;
         this.hospital = hospital;
+        this.appointmentDate = appointmentDate;
     }
 
     public Patient getPatient() {
@@ -40,5 +42,13 @@ public class AppointmentRequest {
 
     public void setHospital(String hospital) {
         this.hospital = hospital;
+    }
+
+    public String getAppointmentDate() {
+        return appointmentDate;
+    }
+
+    public void setAppointmentDate(String appointmentDate) {
+        this.appointmentDate = appointmentDate;
     }
 }

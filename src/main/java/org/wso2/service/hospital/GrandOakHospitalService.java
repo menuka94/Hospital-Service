@@ -1,5 +1,6 @@
 package org.wso2.service.hospital;
 
+import org.wso2.msf4j.Microservice;
 import org.wso2.service.hospital.daos.AppointmentRequest;
 import org.wso2.service.hospital.daos.Doctor;
 
@@ -28,6 +29,12 @@ public class GrandOakHospitalService extends HospitalService {
     @Path("/{category}/reserve")
     public Response reserveAppointment(AppointmentRequest appointmentRequest, @PathParam("category") String category) {
         return super.reserveAppointment(appointmentRequest, category);
+    }
+
+    @GET
+    @Path("/appointments/{appointment_id}")
+    public Response getAppointment(@PathParam("appointment_id") int id) {
+        return super.getAppointment(id);
     }
 
     @GET
